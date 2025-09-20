@@ -138,7 +138,7 @@ async def process_message(message: str, history: list, session_id: str, user_id:
     session_service = InMemorySessionService()
 
     toolbox = ToolboxToolset(
-        server_url="https://toolbox-535807247199.us-central1.run.app",
+        server_url="https://toolbox-728784607517.us-central1.run.app",
         toolset_name="my-toolset",
         auth_token_getters={"google_signin": get_auth_token}
     )
