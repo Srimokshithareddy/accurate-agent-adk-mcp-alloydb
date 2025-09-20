@@ -5,11 +5,11 @@ authServices:
 sources:
   my-alloydb-pg-source:
     kind: alloydb-postgres
-    project: accurate-hackathon
+    project: accurate-hackathon-472709
     region: us-central1
     cluster: alloydb-cluster
     instance: alloydb-inst
-    database: store
+    database: abcnew
     user: postgres
     password: alloydb
 tools:
