@@ -1,0 +1,40 @@
+authServices:
+  google_signin:
+    kind: google
+    clientId: 316231368980-kiq70m8c1ijbbp8f9a6nis46maq6vhpi.apps.googleusercontent.com
+sources:
+  my-alloydb-pg-source:
+    kind: alloydb-postgres
+    project: accurate-hackathon
+    region: us-central1
+    cluster: alloydb-cluster
+    instance: alloydb-inst
+    database: store
+    user: postgres
+    password: alloydb
+tools:
+  check-orders-from-custom-orders:
+    kind: postgres-sql
+    source: my-alloydb-pg-source
+    description: |
+      Check orders for a user from the custom_orders table.
+      Return the order_id, company_code, order_status, order_initdate, order_compdate, and status_notes.
+    parameters:
+      - name: company_code
+        type: string
+        description: The company code of the user’s company (e.g., COMP001).
+    statement: |
+      SELECT 
+        order_id,
+        company_code,
+        order_status,
+        order_initdate,
+        order_compdate,
+        status_notes
+      FROM custom_orders
+      WHERE company_code = $1
+      ORDER BY order_initdate DESC;
+
+toolsets:
+  my-toolset:
+    - check-orders-from-custom-orders
